@@ -85,7 +85,7 @@ public class RegisterTest {
             genderElement.click();      // ca sa dispara toate optiunile de limbi
 
 
-            WebElement skillsElement = Driver.findElement(By.id("Skills"));     //Dropdown - are select in fata. daca nu are SELECT nu merge cu parinte/copil
+            WebElement skillsElement = Driver.findElement(By.id("Skills"));     //Dropdown - are select in fata. daca nu are SELECT nu merge cu OBIECT/CONSTRUCTOR
             Select skillsDropDown = new Select(skillsElement);
             skillsDropDown.selectByVisibleText("Unix");
 

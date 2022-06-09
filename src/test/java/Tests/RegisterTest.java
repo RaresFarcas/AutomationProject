@@ -2,14 +2,12 @@ package Tests;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+import java.util.SplittableRandom;
 
 public class RegisterTest {
         public WebDriver Driver;
@@ -49,7 +47,7 @@ public class RegisterTest {
             emailElement.sendKeys(emailValue);
 
             WebElement phoneElement = Driver.findElement(By.cssSelector("input[ng-model='Phone']"));
-            String phoneValue = "07235512";
+            String phoneValue = "0712888123";
             phoneElement.sendKeys(phoneValue);
 
             WebElement genderElement = Driver.findElement(By.cssSelector("input[value='Male'"));
@@ -84,20 +82,50 @@ public class RegisterTest {
                 }
                 index++;
             }
-            genderElement.click();
+            genderElement.click();      // ca sa dispara toate optiunile de limbi
 
 
-            // ca sa dispara toate optiunile de limbi
-
-
-            WebElement skillsElement = Driver.findElement(By.id("Skills"));     //Dropdown - are select in fata la inspect
+            WebElement skillsElement = Driver.findElement(By.id("Skills"));     //Dropdown - are select in fata. daca nu are SELECT nu merge cu parinte/copil
             Select skillsDropDown = new Select(skillsElement);
             skillsDropDown.selectByVisibleText("Unix");
 
+            WebElement countryDDElement = Driver.findElement(By.cssSelector("span[class='select2-selection select2-selection--single']"));
+            countryDDElement.click();
+            WebElement countryElement = Driver.findElement(By.cssSelector("input[class='select2-search__field']"));
+            String countryfieldInput = "Japan";
+            countryElement.sendKeys(countryfieldInput);
+            countryElement.sendKeys(Keys.ENTER);                    // In cazu asta se poate cu for sau while ca la Languages.
 
 
+            WebElement yearElement = Driver.findElement(By.id("yearbox"));
+            Select yearDropdown = new Select(yearElement);
+            yearDropdown.selectByVisibleText("1919");
 
+            WebElement monthElement = Driver.findElement(By.cssSelector("select[placeholder='Month']"));
+            Select monthDropdown = new Select(monthElement);
+            monthDropdown.selectByVisibleText("December");
 
-            //Driver.quit();
+            WebElement dayElement = Driver.findElement(By.id("daybox"));
+            Select dayDropdown = new Select(dayElement);
+            dayDropdown.selectByVisibleText("8");
+
+            JavascriptExecutor js2 = (JavascriptExecutor) Driver;
+            js2.executeScript("window.scrollBy(0,250)", "");
+
+            WebElement firstPwElement = Driver.findElement(By.id("firstpassword"));
+            String firstPw = "1234567";
+            firstPwElement.sendKeys(firstPw);
+
+            WebElement secondPwElement = Driver.findElement(By.id("secondpassword"));
+            String secondPw = "1234567";
+            secondPwElement.sendKeys(secondPw);
+
+            WebElement chooseElement = Driver.findElement(By.id("imagesrc"));
+            chooseElement.sendKeys("C:\\Users\\rares\\Desktop\\ssTest.jpg");
+
+            WebElement submitElement = Driver.findElement(By.id("submitbtn"));
+            submitElement.click();
+
+            Driver.quit();
         }
 }

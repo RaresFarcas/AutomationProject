@@ -1,5 +1,6 @@
 package Tests;
 
+import base.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -7,29 +8,29 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LogInTest {
-    public WebDriver Driver;
+public class LogInTest extends BaseTest {
+        //public WebDriver Driver;
 
     @Test
     public void MetodaLogin(){
 
         // Setam driverul de chrome
 
-        System.setProperty("webdriver.chrome.driver","C:\\Automation\\chromedriver.exe");
+        //  System.setProperty("webdriver.chrome.driver","C:\\Automation\\chromedriver.exe");
 
         // Deschidem un browser de chrome
 
-        Driver = new ChromeDriver();
+        //  Driver = new ChromeDriver();
 
         // Accesam un url
 
-        Driver.get("http://demo.automationtesting.in/Index.html");
+        //  Driver.get("http://demo.automationtesting.in/Index.html");
 
         // Maximized page
 
-        Driver.manage().window().maximize();            // Fullscreen dispare si bara de jos
-        Driver.manage().window().minimize();    // maximize = face fullscreen              // minimize = baga in bara.
-        Driver.manage().window().maximize();            // Maximize e doar fullscreen - recomandat
+        //  Driver.manage().window().maximize();            // Fullscreen dispare si bara de jos
+        //  Driver.manage().window().minimize();    // maximize = face fullscreen              // minimize = baga in bara.
+        //  Driver.manage().window().maximize();            // Maximize e doar fullscreen - recomandat
 
         // Identificam butonul SingIn
 
@@ -68,6 +69,6 @@ public class LogInTest {
 
         // Inchidem pagina
 
-        Driver.quit();             // close - inchide tabul              quit - inchide pagina - de preferat.
+        //Driver.quit();             // close - inchide tabul              quit - inchide pagina - de preferat.
     }
 }

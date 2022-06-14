@@ -1,5 +1,6 @@
 package Tests;
 
+import base.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.*;
@@ -9,19 +10,11 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.SplittableRandom;
 
-public class RegisterTest {
-        public WebDriver Driver;
+public class RegisterTest extends BaseTest {
 
         @Test
-        public void MetodaLogin(){
+        public void MetodaRegister(){
 
-            System.setProperty("webdriver.chrome.driver","C:\\Automation\\chromedriver.exe");
-
-            Driver = new ChromeDriver();
-
-            Driver.get("http://demo.automationtesting.in/Index.html");
-
-            Driver.manage().window().maximize();
 
             WebElement SkipElement = Driver.findElement(By.id("btn2"));
             SkipElement.click();
@@ -50,10 +43,10 @@ public class RegisterTest {
             String phoneValue = "0712888123";
             phoneElement.sendKeys(phoneValue);
 
-            WebElement genderElement = Driver.findElement(By.cssSelector("input[value='Male'"));
+            WebElement genderElement = Driver.findElement(By.cssSelector("input[value='Male']"));
             genderElement.click();
 
-            WebElement femaleElement = Driver.findElement(By.cssSelector("input[value='FeMale'"));
+            WebElement femaleElement = Driver.findElement(By.cssSelector("input[value='FeMale']"));
             femaleElement.click();
 
             WebElement hobbyElement1 = Driver.findElement(By.id("checkbox1"));
@@ -94,7 +87,7 @@ public class RegisterTest {
             WebElement countryElement = Driver.findElement(By.cssSelector("input[class='select2-search__field']"));
             String countryfieldInput = "Japan";
             countryElement.sendKeys(countryfieldInput);
-            countryElement.sendKeys(Keys.ENTER);                    // In cazu asta se poate cu for sau while ca la Languages.
+            countryElement.sendKeys(Keys.ENTER);                    // In cazu asta se poate cu for sau while ca la Languages
 
 
             WebElement yearElement = Driver.findElement(By.id("yearbox"));
@@ -126,6 +119,5 @@ public class RegisterTest {
             WebElement submitElement = Driver.findElement(By.id("submitbtn"));
             submitElement.click();
 
-            Driver.quit();
         }
 }

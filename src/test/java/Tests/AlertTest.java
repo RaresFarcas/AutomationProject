@@ -1,23 +1,22 @@
 package Tests;
 
 import base.BaseTest;
-import com.beust.ah.A;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
 public class AlertTest extends BaseTest {
 
-@Test
+    @Test
     public void AlertTest(){
 
+        WebElement SkipElement = Driver.findElement(By.id("btn2"));
+        SkipElement.click();
 
         WebElement switchToElement = Driver.findElement(By.xpath("//a[text()='SwitchTo']"));
         Actions action = new Actions(Driver);           // obiect fac cu mouse orice

@@ -4,11 +4,9 @@ import base.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
-import java.util.SplittableRandom;
 
 public class RegisterTest extends BaseTest {
 

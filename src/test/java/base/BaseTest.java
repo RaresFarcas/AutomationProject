@@ -10,21 +10,15 @@ public class BaseTest {
     public WebDriver Driver;
 
     @Before
-    public void setUp(){
+    public void setup(){
         System.setProperty("webdriver.chrome.driver","C:\\Automation\\chromedriver.exe");
-
         Driver = new ChromeDriver();
-
-        Driver.get("http://demo.automationtesting.in/Register.html");
-
+        Driver.get("http://demo.automationtesting.in/Index.html");
         Driver.manage().window().maximize();
-
     }
-
 
     @After
-    public void Clear(){
+    public void close(){
         Driver.quit();
     }
-
 }

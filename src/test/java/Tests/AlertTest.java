@@ -1,5 +1,6 @@
 package Tests;
 
+import HelpMethods.ElementMethods;
 import base.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,12 +16,15 @@ public class AlertTest extends BaseTest {
     @Test
     public void AlertTest(){
 
+        ElementMethods elementMethods = new ElementMethods(Driver);
+
         WebElement SkipElement = Driver.findElement(By.id("btn2"));
         SkipElement.click();
 
         WebElement switchToElement = Driver.findElement(By.xpath("//a[text()='SwitchTo']"));
-        Actions action = new Actions(Driver);           // obiect fac cu mouse orice
-        action.moveToElement(switchToElement).build().perform();
+//        Actions action = new Actions(Driver);           // obiect fac cu mouse orice
+//        action.moveToElement(switchToElement).build().perform();
+        elementMethods.hoverElement(switchToElement);
 
         WebElement alertsElement = Driver.findElement(By.xpath("//a[text()='Alerts']"));
         alertsElement.click();

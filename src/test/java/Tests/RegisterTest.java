@@ -1,5 +1,6 @@
 package Tests;
 
+import HelpMethods.ElementMethods;
 import base.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,9 +14,11 @@ public class RegisterTest extends BaseTest {
         @Test
         public void MetodaRegister(){
 
+            ElementMethods elementMethods = new ElementMethods(Driver);
+
 
             WebElement SkipElement = Driver.findElement(By.id("btn2"));
-            SkipElement.click();
+            elementMethods.clickElement(SkipElement);
 
             String expectedPage = "Register";
             String actualPage = Driver.getTitle();
@@ -23,11 +26,11 @@ public class RegisterTest extends BaseTest {
 
             WebElement firstNameElement = Driver.findElement(By.xpath("//input[@ng-model='FirstName']"));
             String firstNameValue = "Farcas";
-            firstNameElement.sendKeys(firstNameValue);
+            elementMethods.fillElement(firstNameElement,firstNameValue);
 
             WebElement lastNameElement = Driver.findElement(By.xpath("//input[@ng-model='LastName']"));
             String lastNameValue = "Rares Flavius Cristian";
-            lastNameElement.sendKeys(lastNameValue);
+            elementMethods.fillElement(lastNameElement,lastNameValue);
 
             WebElement adressElement = Driver.findElement(By.xpath("//textarea[@ng-model='Adress']"));
             String adressValue = "Cluj-Napoca";
@@ -77,8 +80,7 @@ public class RegisterTest extends BaseTest {
 
 
             WebElement skillsElement = Driver.findElement(By.id("Skills"));     //Dropdown - are select in fata. daca nu are SELECT nu merge cu OBIECT/CONSTRUCTOR
-            Select skillsDropDown = new Select(skillsElement);
-            skillsDropDown.selectByVisibleText("Unix");
+            elementMethods.selectTextElement(skillsElement,"Java");
 
             WebElement countryDDElement = Driver.findElement(By.cssSelector("span[class='select2-selection select2-selection--single']"));
             countryDDElement.click();
@@ -89,16 +91,15 @@ public class RegisterTest extends BaseTest {
 
 
             WebElement yearElement = Driver.findElement(By.id("yearbox"));
-            Select yearDropdown = new Select(yearElement);
-            yearDropdown.selectByVisibleText("1919");
+            elementMethods.selectValueElement(yearElement,"1951");
 
             WebElement monthElement = Driver.findElement(By.cssSelector("select[placeholder='Month']"));
-            Select monthDropdown = new Select(monthElement);
-            monthDropdown.selectByVisibleText("December");
+            elementMethods.selectTextElement(monthElement,"December");
 
             WebElement dayElement = Driver.findElement(By.id("daybox"));
-            Select dayDropdown = new Select(dayElement);
-            dayDropdown.selectByVisibleText("8");
+//            Select dayDropdown = new Select(dayElement);
+//            dayDropdown.selectByVisibleText("8");
+            elementMethods.selectValueElement(dayElement,"8");
 
             JavascriptExecutor js2 = (JavascriptExecutor) Driver;
             js2.executeScript("window.scrollBy(0,250)", "");

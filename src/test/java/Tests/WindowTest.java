@@ -63,9 +63,5 @@ public class WindowTest extends BaseTest {
         Driver.switchTo().window(TabsList.get(0));   //m-am mutat pe primul tab
         System.out.println(Driver.getTitle());
 
-
     }
-
-
-
 }

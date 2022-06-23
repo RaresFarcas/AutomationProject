@@ -1,12 +1,15 @@
 package Tests;
 
+import HelpMethods.AlertMethods;
 import HelpMethods.ElementMethods;
+import HelpMethods.PageMethods;
 import base.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.devtools.v85.page.Page;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
@@ -17,6 +20,8 @@ public class AlertTest extends BaseTest {
     public void AlertTest(){
 
         ElementMethods elementMethods = new ElementMethods(Driver);
+        AlertMethods alertMethods = new AlertMethods(Driver);
+        PageMethods pageMethods = new PageMethods(Driver);
 
         WebElement SkipElement = Driver.findElement(By.id("btn2"));
         SkipElement.click();

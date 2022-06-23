@@ -1,5 +1,7 @@
 package Tests;
 
+import HelpMethods.ElementMethods;
+import HelpMethods.TabMethods;
 import base.BaseTest;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -13,6 +15,9 @@ public class WindowTest extends BaseTest {
 
     @Test
     public void WindowTest(){
+
+        ElementMethods elementMethods = new ElementMethods(Driver);
+        TabMethods tabMethods = new TabMethods(Driver);
 
         WebElement SkipElement = Driver.findElement(By.id("btn2"));
         SkipElement.click();
@@ -42,12 +47,15 @@ public class WindowTest extends BaseTest {
         WebElement click2 = Driver.findElement(By.cssSelector("#Seperate>button"));        // # se foloseste la id . se foloseste la clasa
         click2.click();
 
-        List<String> WindowList = new ArrayList<>(Driver.getWindowHandles());
-        Driver.switchTo().window(WindowList.get(1));
-        System.out.println(Driver.getTitle());
-        Driver.close();
-        Driver.switchTo().window(WindowList.get(0));   //m-am mutat pe primul tab
-        System.out.println(Driver.getTitle());
+//        List<String> WindowList = new ArrayList<>(Driver.getWindowHandles());
+//        Driver.switchTo().window(WindowList.get(1));
+//        System.out.println(Driver.getTitle());
+        tabMethods.switchSpecificTabWindow(1);
+        tabMethods.closeTabWindow();
+//        Driver.close();
+//        Driver.switchTo().window(WindowList.get(0));   //m-am mutat pe primul tab
+//        System.out.println(Driver.getTitle());
+        tabMethods.switchSpecificTabWindow(0);
 
         Windows.get(2).click();
         WebElement click3 = Driver.findElement(By.cssSelector("#Multiple>button"));

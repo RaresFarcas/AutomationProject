@@ -5,13 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>AutomationaFramework</artifactId>
+    <artifactId>Automation_Framework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
     </properties>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
@@ -26,7 +27,6 @@
             <artifactId>selenium-java</artifactId>
             <version>4.2.1</version>
         </dependency>
-
     </dependencies>
 
 </project>

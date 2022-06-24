@@ -1,8 +1,10 @@
 package Tests;
 
+import Base.BaseTest;
 import HelpMethods.ElementMethods;
+import HelpMethods.PageMethods;
 import HelpMethods.TabMethods;
-import base.BaseTest;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -14,62 +16,55 @@ import java.util.List;
 public class WindowTest extends BaseTest {
 
     @Test
-    public void WindowTest(){
+    public void windowTest(){
 
-        ElementMethods elementMethods = new ElementMethods(Driver);
-        TabMethods tabMethods = new TabMethods(Driver);
+        ElementMethods elementMethods=new ElementMethods(Driver);
+        PageMethods pageMethods=new PageMethods(Driver);
+        TabMethods tabMethods=new TabMethods(Driver);
 
-        WebElement SkipElement = Driver.findElement(By.id("btn2"));
-        SkipElement.click();
+        WebElement skipSignInElement = Driver.findElement(By.id("btn2"));
+        skipSignInElement.click();
 
-        WebElement switchToElement = Driver.findElement(By.xpath("//a[text()='SwitchTo']"));
-        Actions action = new Actions(Driver);           // obiect fac cu mouse orice
-        action.moveToElement(switchToElement).build().perform();
+        String expectedPage = "Register";
+        pageMethods.validateTitlePage(expectedPage);
 
-        WebElement alertsElement = Driver.findElement(By.xpath("//a[text()='Windows']"));
-        alertsElement.click();
 
-        Driver.navigate().to("http://demo.automationtesting.in/Windows.html");
+        WebElement switchElement = Driver.findElement(By.xpath("//a[text()='SwitchTo']"));//obiect fac cu mouse orice
+        elementMethods.hoverElement(switchElement);
 
-        List<WebElement> Windows = Driver.findElements(By.cssSelector(".analystic"));
-        Windows.get(0).click();
-        WebElement click1 = Driver.findElement(By.cssSelector("#Tabbed>a>button"));        // # se foloseste la id . se foloseste la clasa
-        click1.click();
+        WebElement windowsElement = Driver.findElement(By.xpath("//a[text()='Windows']"));
+        elementMethods.clickElement(windowsElement);
+        pageMethods.navigateToURL("http://demo.automationtesting.in/Windows.html");
 
-        List<String> tabList = new ArrayList<>(Driver.getWindowHandles());
-        Driver.switchTo().window(tabList.get(1));   // m-am mutat pe al 2-lea tab
-        System.out.println(Driver.getTitle());
-        Driver.close();
-        Driver.switchTo().window(tabList.get(0));   //m-am mutat pe primul tab
-        System.out.println(Driver.getTitle());
+        List<WebElement> windowsButtons=Driver.findElements(By.cssSelector(".analystic"));
+        windowsButtons.get(0).click();
+        WebElement clickTabElement=Driver.findElement(By.cssSelector("#Tabbed>a>button"));
+        clickTabElement.click();
 
-        Windows.get(1).click();
-        WebElement click2 = Driver.findElement(By.cssSelector("#Seperate>button"));        // # se foloseste la id . se foloseste la clasa
-        click2.click();
-
-//        List<String> WindowList = new ArrayList<>(Driver.getWindowHandles());
-//        Driver.switchTo().window(WindowList.get(1));
-//        System.out.println(Driver.getTitle());
         tabMethods.switchSpecificTabWindow(1);
-        tabMethods.closeTabWindow();
-//        Driver.close();
-//        Driver.switchTo().window(WindowList.get(0));   //m-am mutat pe primul tab
-//        System.out.println(Driver.getTitle());
+        tabMethods.closeCurrentTabWindow();
         tabMethods.switchSpecificTabWindow(0);
 
-        Windows.get(2).click();
-        WebElement click3 = Driver.findElement(By.cssSelector("#Multiple>button"));
-        click3.click();
 
-        List<String> TabsList = new ArrayList<>(Driver.getWindowHandles());
-        Driver.switchTo().window(TabsList.get(2));
-        System.out.println(Driver.getTitle());
-        Driver.close();
-        Driver.switchTo().window(TabsList.get(1));   //m-am mutat pe  tab2
-        System.out.println(Driver.getTitle());
-        Driver.close();
-        Driver.switchTo().window(TabsList.get(0));   //m-am mutat pe primul tab
-        System.out.println(Driver.getTitle());
+        windowsButtons.get(1).click();
+        WebElement clickWindowElement=Driver.findElement(By.cssSelector("button[class='btn btn-primary']"));
+        clickWindowElement.click();
+
+        tabMethods.switchSpecificTabWindow(1);
+        tabMethods.closeCurrentTabWindow();
+        tabMethods.switchSpecificTabWindow(0);
+
+        windowsButtons.get(2).click();
+        WebElement multiWindElement=Driver.findElement(By.cssSelector("#Multiple>button"));
+        multiWindElement.click();
+
+        tabMethods.switchSpecificTabWindow(2);
+        tabMethods.closeCurrentTabWindow();
+
+        tabMethods.switchSpecificTabWindow(1);
+        tabMethods.closeCurrentTabWindow();
+
+        tabMethods.switchSpecificTabWindow(0);
 
     }
 }

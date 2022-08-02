@@ -13,9 +13,9 @@ public class Hooks extends BaseTest{
     @Before
     public void setUp(){
         setupMethod();
-//        String testName = this.getClass().getSimpleName();
-//        PropertyFile testData = new PropertyFile("inputData/"+testName+"Resource");
-//        inputData = testData.getAllTheValues();
+        String testName = this.getClass().getSimpleName();
+        PropertyFile testData = new PropertyFile("inputData/"+testName+"Resource");
+        inputData = testData.getAllTheValues();
     }
 
     @After

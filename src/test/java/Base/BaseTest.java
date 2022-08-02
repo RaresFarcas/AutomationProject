@@ -14,12 +14,10 @@ public class BaseTest {
     public WebDriver driver;
 
     public void setupMethod(){
-        System.setProperty("webdriver.chrome.driver", "C:\\Automation\\chromedriver.exe");
-//        PropertyFile driverResource = new PropertyFile("/DriverData/Driver");
-//        System.setProperty(driverResource.getValue("driver"), driverResource.getValue("pathDriver"));
+        PropertyFile driverResource = new PropertyFile("/DriverData/Driver");
+        System.setProperty(driverResource.getValue("driver"), driverResource.getValue("pathDriver"));
         driver = new ChromeDriver();
-        driver.get("https://www.inter-auto.ro/");
-//        driver.get(driverResource.getValue("RMB"));
+        driver.get(driverResource.getValue("RMB"));
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 

@@ -13,6 +13,7 @@ public class PropertyFile {
         properties = new Properties();
         try {
             fileInputStream = new FileInputStream("src/test/data/"+path+".properties");
+            properties.load(fileInputStream);
         } catch (IOException e){
             throw new RuntimeException(e);
         }

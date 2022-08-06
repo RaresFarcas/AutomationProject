@@ -150,7 +150,7 @@ public class HelpMethods {
             }
             element.get(start).click();
             navigateback();
-            //astept pana cand lista de branduri ii incarcata
+            //astept pana cand lista de branduri e incarcata
             WaitForElements(By.xpath("//div[@class='row g-mb-30 ']/div/a"));
             start++;
             index++;
@@ -188,19 +188,21 @@ public void slidepicWhile(List<WebElement> element, List<WebElement> dot) throws
         }
     }
 
-    public void sendKeysMethod(WebElement element, Integer val){
-        List<String> values = new ArrayList<>();
-        values.add("raresfrfc@yahoo.com");
-        values.add("asdiasbfsiad");
-        values.add("123791623");
-        values.add(" //:{}!@#%!");
-        element.sendKeys(values.get(val));
+    public void sendKeysMethod(WebElement element, String val){
+        element.sendKeys(val);
     }
-
 
     public void scrollDown(Integer val){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,"+val+")", "");
+    }
+
+    public void whileMaxNr(List<WebElement> element, Integer max) throws InterruptedException {
+        Integer index = 0;
+        while (index <=max){
+            element.get(index).click();
+            index++;
+        }
     }
 }
 

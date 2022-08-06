@@ -10,7 +10,9 @@ public class HomePageTests extends Hooks{
     @Test
     public void homePageTests() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
-        homePage.elemente();
+        homePage.simpleElements();
+        homePage.solicitaEvaluare(inputData);
+        homePage.solicitaTestDrive(inputData);
 
     }
 

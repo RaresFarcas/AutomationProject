@@ -77,6 +77,10 @@ public class HelpMethods {
         driver.navigate().to("https://www.inter-auto.ro/");
     }
 
+    public void navigateToAutovehicule(){
+        driver.navigate().to("https://www.inter-auto.ro/autovehicule.html");
+    }
+
     public void autobrands(List<WebElement> element, Integer count) {
         Integer i = 0;
         while (i <= count) {
@@ -192,9 +196,9 @@ public void slidepicWhile(List<WebElement> element, List<WebElement> dot) throws
         element.sendKeys(val);
     }
 
-    public void scrollDown(Integer val){
+    public void scrollUp(Integer val){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,"+val+")", "");
+        js.executeScript("window.scrollBy(0,-"+val+")", "");
     }
 
     public void whileMaxNr(List<WebElement> element, Integer max) throws InterruptedException {
@@ -203,6 +207,16 @@ public void slidepicWhile(List<WebElement> element, List<WebElement> dot) throws
             element.get(index).click();
             index++;
         }
+    }
+
+    public void selectDropDown(WebElement element, String value){
+        Select dropDown = new Select(element);
+        dropDown.selectByVisibleText(value);
+    }
+
+    public void getText(WebElement element, String value){
+        String actualValue = element.getText();
+        Assert.assertEquals("The displayed element is not correct!", value, actualValue);
     }
 }
 

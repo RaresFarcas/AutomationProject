@@ -13,7 +13,5 @@ public class HomePageTests extends Hooks{
         homePage.simpleElements();
         homePage.solicitaEvaluare(inputData);
         homePage.solicitaTestDrive(inputData);
-
     }
-
 }

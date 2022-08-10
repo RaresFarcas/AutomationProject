@@ -20,6 +20,6 @@ public class Hooks extends BaseTest{
 
     @After
     public void clear(){
-
+    driver.quit();
     }
 }

@@ -2,6 +2,7 @@ package Pages;
 
 import Base.BaseTest;
 import HelpMethods.HelpMethods;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -61,6 +62,7 @@ public class AutovehiculePage extends BaseTest{
     @FindBy(xpath = "//div[@class='col-lg-7 col-xs-12 g-pt-0']/h2/a")
     private List<WebElement> textresult;
 
+
     public void autovehiculeFilters1(HashMap<String, String> inputData) throws InterruptedException {
         helpMethods.clickMethod(rulateNoi.get(0));
         helpMethods.clickMethod(tip.get(0));
@@ -73,10 +75,12 @@ public class AutovehiculePage extends BaseTest{
         helpMethods.clickMethod(sortare.get(1));
         helpMethods.clickMethod(filtreaza);
         helpMethods.scrollUp(400);
+        Thread.sleep(500);
+        helpMethods.getText(textresult.get(0), "DACIA SANDERO");
         helpMethods.navigateToAutovehicule();
     }
 
-    public void autovehiculeFilters2(HashMap<String,String> inputData){
+    public void autovehiculeFilters2(HashMap<String,String> inputData) throws InterruptedException {
         helpMethods.clickMethod(rulateNoi.get(1));
         helpMethods.clickMethod(tip.get(0));
         helpMethods.selectDropDown(marcaDD,inputData.get("marca3"));
@@ -86,27 +90,36 @@ public class AutovehiculePage extends BaseTest{
         helpMethods.clickMethod(sortare.get(0));
         helpMethods.clickMethod(filtreaza);
         helpMethods.scrollUp(400);
+        Thread.sleep(500);
+        helpMethods.getText(textresult.get(0), "MERCEDES-BENZ C 180");
+        helpMethods.getText(textresult.get(1), "MERCEDES-BENZ GLB");
         helpMethods.navigateToAutovehicule();
     }
 
-    public void autovehiculeFilters3(HashMap<String,String> inputData){
+    public void autovehiculeFilters3(HashMap<String,String> inputData) throws InterruptedException {
         helpMethods.clickMethod(rulateNoi.get(0));
         helpMethods.clickMethod(tip.get(1));
         helpMethods.selectDropDown(marcaDD,inputData.get("marca2"));
         helpMethods.selectDropDown(carburantDD,inputData.get("combustibil2"));
+        helpMethods.selectDropDown(rulajDD,inputData.get("rulaj4"));
         helpMethods.clickMethod(sortare.get(2));
         helpMethods.clickMethod(filtreaza);
         helpMethods.scrollUp(400);
+        Thread.sleep(500);
+        helpMethods.getText(textresult.get(0), "FORD Transit Courier");
+        helpMethods.getText(textresult.get(1), "FORD Transit Jumbo");
+        helpMethods.getText(textresult.get(2), "FORD Transit");
         helpMethods.navigateToAutovehicule();
     }
 
-    public void autovehiculeFilters4(HashMap<String, String> inputData){
+    public void autovehiculeFilters4(HashMap<String, String> inputData) throws InterruptedException {
         helpMethods.selectDropDown(marcaDD,inputData.get("marca3"));
         helpMethods.selectDropDown(rulajDD,inputData.get("rulaj2"));
         helpMethods.selectDropDown(anDD,inputData.get("an2"));
         helpMethods.selectDropDown(carburantDD,inputData.get("combustibil3"));
         helpMethods.clickMethod(filtreaza);
         helpMethods.scrollUp(400);
-
+        Thread.sleep(500);
+        helpMethods.getText(textresult.get(0), "MERCEDES-BENZ EQB 300 4MATIC");
     }
 }
